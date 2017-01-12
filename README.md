@@ -33,7 +33,7 @@ int main(){
   success = njoy_setup_output_file( bufferPointer(output), output.length() );
 
   njoy_c_MODER(); /* note SCREAMCASE routine names */
-  njoy_c_RECONR() 
+  njoy_c_RECONR();
   
   success = njoy_cleanup_input_file();
   success = njoy_cleanup_output_file();
