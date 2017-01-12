@@ -101,7 +101,7 @@ contains
   subroutine wimsr_binding() bind(c, name = 'njoy_c_WIMSR')
     use wimsm
     implicit none
-    call winsr()
+    call wimsr()
   end subroutine wimsr_binding
 
   subroutine plotr_binding() bind(c, name = 'njoy_c_PLOTR')
