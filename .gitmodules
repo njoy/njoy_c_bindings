@@ -1,0 +1,3 @@
+[submodule "dependencies/njoy"]
+	path = dependencies/njoy
+	url = https://github.com/njoy/njoy.git
