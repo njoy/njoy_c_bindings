@@ -1,0 +1,15 @@
+{
+"header_files": [],
+"language": "fortran",
+"version": "0.0.1",
+"is_external_project": false,
+"language_revision": "Fortran2003",
+"implementation_files": [
+"src/njoy_c_bindings.f90",
+"src/njoy_c_helpers.f90"
+],
+"name": "njoy_c_bindings",
+"include_path": "src",
+"unit_tests": {},
+"target": "library"
+}
