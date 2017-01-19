@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-#define SIGNATURE( module_name ) void njoy_c_##module_name##();
+#define SIGNATURE( module_name ) void njoy_c_##module_name();
   SIGNATURE( MODER )
   SIGNATURE( RECONR )
   SIGNATURE( BROADR )
