@@ -1,6 +1,6 @@
 module njoy_c_helpers
   use iso_c_binding
-  use mainio, only: njoy_input_unit => nsysi, njoy_output_unit => nsyso
+  use mainio, only: njoy_input_unit => nsysi, njoy_output_unit => nsyso, njoy_error_unit => nsyse
 
 contains
 
@@ -42,7 +42,8 @@ contains
     integer(c_int) :: error_code    
     
     filename = c2fortran_string(output_filename, name_length)
-    open(unit = njoy_output_unit, file = filename, status = 'old', action = 'write', position = 'append', iostat = error_code)
+    open(unit = njoy_output_unit, file = filename, status = 'unknown', action = 'write', position = 'append', iostat = error_code)
+    njoy_error_unit = njoy_output_unit
   end function setup_output_file
 
   function cleanup_output_file() result(error_code) bind(c, name = 'njoy_cleanup_output_file')
