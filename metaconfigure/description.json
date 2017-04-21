@@ -1,15 +1,188 @@
 {
-"header_files": [],
-"language": "fortran",
-"version": "0.0.1",
-"is_external_project": false,
-"language_revision": "Fortran2003",
-"implementation_files": [
-"src/njoy_c_bindings.f90",
-"src/njoy_c_helpers.f90"
-],
-"name": "njoy_c_bindings",
-"include_path": "src",
-"unit_tests": {},
-"target": "library"
+  "compiler": {
+    "gfortran": {
+      "linux": {
+        "flags": {
+          "base project": [],
+          "common": [],
+          "coverage": [
+            "--coverage"
+          ],
+          "debug": [
+            "-O0",
+            "-g",
+            "-gdwarf-3",
+            "-fsignaling-nans",
+            "-fcheck=all",
+            "-ffpe-trap=invalid,zero,overflow"
+          ],
+          "link time optimization": [
+            "-flto"
+          ],
+          "nonportable optimization": [
+            "-march=native"
+          ],
+          "optimization": [
+            "-O3",
+            "-DNDEBUG"
+          ],
+          "profile generate": [
+            "-fprofile-generate='{profile_path}'"
+          ],
+          "profile use": [
+            "-fprofile-use='{profile_path}'"
+          ],
+          "static": [
+            "-static"
+          ],
+          "strict": [
+            "-Werror"
+          ],
+          "subproject": [],
+          "warning": [
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic"
+          ]
+        },
+        "standard": {
+          "fortran2003": "-std=f2003",
+          "fortran2008": "-std=f2008",
+          "fortran77": "-std=legacy",
+          "fortran95": "-std=f95"
+        }
+      },
+      "minimum version": "5.1",
+      "osx": {
+        "flags": {
+          "base project": [],
+          "common": [],
+          "coverage": [
+            "--coverage"
+          ],
+          "debug": [
+            "-O0",
+            "-g",
+            "-gdwarf-3",
+            "-fsignaling-nans",
+            "-fcheck=all",
+            "-ffpe-trap=invalid,zero,overflow"
+          ],
+          "link time optimization": [
+            "-flto"
+          ],
+          "nonportable optimization": [
+            "-march=native"
+          ],
+          "optimization": [
+            "-O3",
+            "-DNDEBUG"
+          ],
+          "profile generate": [
+            "-fprofile-generate='{profile_path}'"
+          ],
+          "profile use": [
+            "-fprofile-use='{profile_path}'"
+          ],
+          "static": [
+            "-static"
+          ],
+          "strict": [
+            "-Werror"
+          ],
+          "subproject": [],
+          "warning": [
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic"
+          ]
+        },
+        "standard": {
+          "fortran2003": "-std=f2003",
+          "fortran2008": "-std=f2008",
+          "fortran77": "-std=legacy",
+          "fortran95": "-std=f95"
+        }
+      },
+      "windows": {
+        "flags": {
+          "base project": [],
+          "common": [],
+          "coverage": [
+            "--coverage"
+          ],
+          "debug": [
+            "-O0",
+            "-g",
+            "-gdwarf-3",
+            "-fsignaling-nans",
+            "-fcheck=all",
+            "-ffpe-trap=invalid,zero,overflow"
+          ],
+          "link time optimization": [
+            "-flto"
+          ],
+          "nonportable optimization": [
+            "-march=native"
+          ],
+          "optimization": [
+            "-O3",
+            "-DNDEBUG"
+          ],
+          "profile generate": [
+            "-fprofile-generate='{profile_path}'"
+          ],
+          "profile use": [
+            "-fprofile-use='{profile_path}'"
+          ],
+          "static": [
+            "-static"
+          ],
+          "strict": [
+            "-Werror"
+          ],
+          "subproject": [],
+          "warning": [
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic"
+          ]
+        },
+        "standard": {
+          "fortran2003": "-std=f2003",
+          "fortran2008": "-std=f2008",
+          "fortran77": "-std=legacy",
+          "fortran95": "-std=f95"
+        }
+      }
+    }
+  },
+  "file extension": {
+    "implementation files": [
+      "f",
+      "for",
+      "f90"
+    ]
+  },
+  "ignore pattern": "$^",
+  "implementation files": [
+    "src/njoy_c_bindings.f90",
+    "src/njoy_c_helpers.f90"
+  ],
+  "include path": "src",
+  "initialized": true,
+  "is external project": false,
+  "language": "fortran",
+  "name": "njoy_c_bindings",
+  "standards": [
+    "fortran77",
+    "fortran90",
+    "fortran95",
+    "fortran2003",
+    "fortran2008"
+  ],
+  "strict": true,
+  "test pattern": "test$",
+  "tests": {},
+  "update": true
 }
