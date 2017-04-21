@@ -181,7 +181,7 @@
     "fortran2003",
     "fortran2008"
   ],
-  "strict": true,
+  "strict": false,
   "test pattern": "test$",
   "tests": {},
   "update": true
