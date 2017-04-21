@@ -41,8 +41,7 @@
           "subproject": [],
           "warning": [
             "-Wall",
-            "-Wextra",
-            "-Wpedantic"
+            "-Wextra"
           ]
         },
         "standard": {
@@ -93,8 +92,7 @@
           "subproject": [],
           "warning": [
             "-Wall",
-            "-Wextra",
-            "-Wpedantic"
+            "-Wextra"
           ]
         },
         "standard": {
@@ -144,8 +142,7 @@
           "subproject": [],
           "warning": [
             "-Wall",
-            "-Wextra",
-            "-Wpedantic"
+            "-Wextra"
           ]
         },
         "standard": {
