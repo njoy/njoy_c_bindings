@@ -188,14 +188,6 @@ target_link_libraries( njoy_c_bindings PUBLIC "$<$<AND:$<CONFIG:RELEASE>,$<BOOL:
 target_link_libraries( njoy_c_bindings PUBLIC njoy )
 
 
-install( TARGETS njoy_c_bindings 
-         RUNTIME DESTINATION bin
-         LIBRARY DESTINATION lib
-         ARCHIVE DESTINATION lib
-         PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ 
-                     GROUP_EXECUTE GROUP_READ 
-                     WORLD_EXECUTE WORLD_READ )
-
 file( RELATIVE_PATH relative_fortran_module_files_path 
       "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_Fortran_MODULE_DIRECTORY}" )
 file( GLOB fortran_module_files 
