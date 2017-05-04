@@ -21,6 +21,6 @@ git checkout master
 git add $filename.json
 git commit -m "Adding signature file for $project."
 
-git remote add origin-travis https://user:${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git > /dev/null 2>&1
+git remote add origin-travis https://user:${GH_TOKEN}@github.com/njoy/signatures.git > /dev/null 2>&1
 
-git push --set-upstream origin-travis master
+git push --quiet --set-upstream origin-travis master
