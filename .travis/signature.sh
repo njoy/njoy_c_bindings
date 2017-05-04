@@ -23,4 +23,7 @@ git add $filename.json
 
 git remote add origin-travis https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git > /dev/null 2>&1
 
+echo "pushing to github"
 git push --quiet --set-upstream origin-travis master
+
+ls
