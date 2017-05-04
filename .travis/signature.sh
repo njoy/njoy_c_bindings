@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if [ ! "TRAVIS_PULL_REQUEST" ] && [ "TRAVIS_BRANCH" = "master" ]; then
+if [ "$TRAVIS_PULL_REQUEST" = false ] && [ "$TRAVIS_BRANCH" = "master" ]; then
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis CI"
 
@@ -23,5 +23,5 @@ if [ ! "TRAVIS_PULL_REQUEST" ] && [ "TRAVIS_BRANCH" = "master" ]; then
 
   git remote add origin-travis https://user:${GH_TOKEN}@github.com/njoy/signatures.git > /dev/null 2>&1
 
-  git push --quiet --set-upstream origin-travis master
+git push --quiet --set-upstream origin-travis master
 fi
