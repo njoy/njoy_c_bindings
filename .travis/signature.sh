@@ -16,9 +16,11 @@ filename=$DIR/$timestamp
 # Generate the signature file
 ./metaconfigure/signature.py $filename
 
+cd $DIR
+echo "I'm in: $PWD"
+echo "adding $filename.json to signatures"
 git add $filename.json
 
-cd $DIR
 git remote add origin-travis https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git > /dev/null 2>&1
 
 git push --quiet --set-upstream origin-travis master
