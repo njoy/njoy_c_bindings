@@ -20,6 +20,7 @@ cd $DIR
 echo "I'm in: $PWD"
 echo "adding $filename.json to signatures"
 git add $filename.json
+git commit -m "Adding signature file for $project."
 
 git remote add origin-travis https://user:${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git > /dev/null 2>&1
 
