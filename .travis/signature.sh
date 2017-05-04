@@ -1,5 +1,8 @@
 #! /bin/bash
 
+git config --global user.email "travis@travis-ci.org"
+git config --global user.name "Travis CI"
+
 hash=`git rev-parse HEAD`
 timestamp=`date +%F_%T`
 
