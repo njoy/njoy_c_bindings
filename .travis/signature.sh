@@ -3,6 +3,10 @@
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
+env
+
+env | grep project
+
 hash=`git rev-parse HEAD`
 timestamp=`date +%F_%T`
 
