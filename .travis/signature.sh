@@ -1,25 +1,27 @@
 #! /bin/bash
 
-git config --global user.email "travis@travis-ci.org"
-git config --global user.name "Travis CI"
+if [ ! "TRAVIS_PULL_REQUEST" ] && [ "TRAVIS_BRANCH" = "master" ]; then
+  git config --global user.email "travis@travis-ci.org"
+  git config --global user.name "Travis CI"
 
-timestamp=`date +%F_%T`
+  timestamp=`date +%F_%T`
 
-git clone https://github.com/njoy/signatures.git
+  git clone https://github.com/njoy/signatures.git
 
-project=$(basename $TRAVIS_REPO_SLUG)
-DIR="$PWD/signatures/$project"
-mkdir -p $DIR
+  project=$(basename $TRAVIS_REPO_SLUG)
+  DIR="$PWD/signatures/$project"
+  mkdir -p $DIR
 
-filename=$DIR/$timestamp
+  filename=$DIR/$timestamp
 
-./metaconfigure/signature.py $filename
+  ./metaconfigure/signature.py $filename
 
-cd $DIR
-git checkout master
-git add $filename.json
-git commit -m "Adding signature file for $project."
+  cd $DIR
+  git checkout master
+  git add $filename.json
+  git commit -m "Adding signature file for $project."
 
-git remote add origin-travis https://user:${GH_TOKEN}@github.com/njoy/signatures.git > /dev/null 2>&1
+  git remote add origin-travis https://user:${GH_TOKEN}@github.com/njoy/signatures.git > /dev/null 2>&1
 
-git push --quiet --set-upstream origin-travis master
+  git push --quiet --set-upstream origin-travis master
+fi
