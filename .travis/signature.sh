@@ -17,14 +17,10 @@ filename=$DIR/$timestamp
 ./metaconfigure/signature.py $filename
 
 cd $DIR
-echo "I'm in: $PWD"
-echo "adding $filename.json to signatures"
+git checkout master
 git add $filename.json
 git commit -m "Adding signature file for $project."
 
 git remote add origin-travis https://user:${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git > /dev/null 2>&1
 
-echo "pushing to github"
 git push --quiet --set-upstream origin-travis master
-
-ls
