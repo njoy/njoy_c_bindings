@@ -3,14 +3,10 @@
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
-env
-
-env | grep project
-
-hash=`git rev-parse HEAD`
 timestamp=`date +%F_%T`
 
-git clone git@github.com:njoy/signatures.git
+project=$(basename $TRAVIS_REPO_SLUG)
+git clone git@github.com:$TRAVIS_REPO_SLUG.git
 
 DIR="$PWD/signatures/$project"
 mkdir -p $DIR
@@ -24,6 +20,6 @@ echo $filename
 git add $filename.json
 
 cd $DIR
-git remote add origin-travis https://${GH_TOKEN}@github.com/njoy/$project.git > /dev/null 2>&1
+git remote add origin-travis https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git > /dev/null 2>&1
 
 git push --quiet --set-upstream origin-travis master
