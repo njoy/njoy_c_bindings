@@ -22,8 +22,8 @@ script: "./.travis/build.sh"
 after_success: "./.travis/signature.sh"
 
 env:
-  - project="njoy_c_bindings"
   matrix:
     - build_type=debug static_libraries=FALSE
   global:
+    project: "njoy_c_bindings"
     secure: YkeL9vNUyLOU6e7fnj9OdlYxYQlDrjyQdUNcGpogTVe2Cmyi1E70wgp+pcllaJN72mFd5IP/IUo8Ip5eJzOXKEzpVZK7YSjW/nqGNLxZA99wUM6l30EZx1aPPP8rLdEAdceyPogYkiARiJ6XT8mSDOic03eAvC2it7vHYhRqKTKRdXNFuYB9gVPLsTSjThHVsYUhsz4UrrqFzrwLIdWbsCEXEfCdZP5GI0BXuLY57ayOfCdSUO5ZbMpxhp5JjDooPs7ak05Z86oK51MSHGx5Cy1WR3BUEtOt9RGN4iNzmBa29CJvUJWSM9CPpcuV8C0Ck9cYsuqjwfTRcGFSa8OENr8Px29qYeRN+kfL/hTBFJN8nWfLm7ZOYi9emVMky5nvS3Z4whyb/tXSH1TUl8lg0N7ZgjEfNTcgLsUq5ing7pmx2fsyz2zxGWYfRxTWGeCHa86BMmhqwaQfhzuQePuGJjmCC7lD4j7YqEBeCprZofTgtMmX9ihMhdV6EJqFKD/LXIDC5Vvrlo8tP8Qj1JlLy+tbNyvl5fqTXlhaOWLA1CyZFHzKpPV8lLMg7lxuCIlQ2Deq5AyA8qQlrgoVNkVYJa/E+kh8+KxJetBQdtykD85wbQ5Q+paEJHtgWBNlXOxxdcBwJ4kzGCDWRzg8ndazelpzmKf3UdMQJWWa/MGstWM=
