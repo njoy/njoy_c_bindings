@@ -23,4 +23,4 @@ git commit -m "Adding signature file for $project."
 
 git remote add origin-travis https://user:${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git > /dev/null 2>&1
 
-git push --quiet --set-upstream origin-travis master
+git push --set-upstream origin-travis master
