@@ -5,9 +5,10 @@ git config --global user.name "Travis CI"
 
 timestamp=`date +%F_%T`
 
-project=$(basename $TRAVIS_REPO_SLUG)
-git clone https://github.com/${TRAVIS_REPO_SLUG}.git
+git clone https://user:${GH_TOKEN}@github.com/njoy/signatures.git > /deve/null
+2>&1
 
+project=$(basename $TRAVIS_REPO_SLUG)
 DIR="$PWD/signatures/$project"
 mkdir -p $DIR
 
@@ -21,6 +22,4 @@ git checkout master
 git add $filename.json
 git commit -m "Adding signature file for $project."
 
-git remote add origin-travis https://user:${GH_TOKEN}@github.com/njoy/signatures.git > /dev/null 2>&1
-
-git push --quiet --set-upstream origin-travis master
+git push --quiet origin master
