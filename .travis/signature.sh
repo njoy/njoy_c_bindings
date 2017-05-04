@@ -6,13 +6,12 @@ git config --global user.name "Travis CI"
 timestamp=`date +%F_%T`
 
 project=$(basename $TRAVIS_REPO_SLUG)
-git clone git@github.com:$TRAVIS_REPO_SLUG.git
+git clone https://github.com/${TRAVIS_REPO_SLUG}.git
 
 DIR="$PWD/signatures/$project"
 mkdir -p $DIR
 
 filename=$DIR/$timestamp
-echo $filename
 
 # Generate the signature file
 ./metaconfigure/signature.py $filename
