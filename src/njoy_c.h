@@ -34,8 +34,10 @@ extern "C"
 
   int njoy_setup_input_file( char* filename, int string_length );
   int njoy_setup_output_file( char* filename, int string_length );
+  int njoy_setup_error_file( char* filename, int string_length );
   int njoy_cleanup_input_file();
   int njoy_cleanup_output_file();
+  int njoy_cleanup_error_file();
   
 #ifdef __cplusplus
 }
