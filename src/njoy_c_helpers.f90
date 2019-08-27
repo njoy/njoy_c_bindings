@@ -43,12 +43,28 @@ contains
     
     filename = c2fortran_string(output_filename, name_length)
     open(unit = njoy_output_unit, file = filename, status = 'unknown', action = 'write', position = 'append', iostat = error_code)
-    njoy_error_unit = njoy_output_unit
   end function setup_output_file
 
   function cleanup_output_file() result(error_code) bind(c, name = 'njoy_cleanup_output_file')
     integer(c_int) :: error_code    
     close(unit = njoy_output_unit, iostat = error_code)
   end function cleanup_output_file
+
+  function setup_error_file(error_filename, name_length) result(error_code) bind(c, name = 'njoy_setup_error_file')
+    implicit none
+    type(c_ptr), intent(in), value :: error_filename
+    integer(c_int), intent(in), value :: name_length
+    
+    character(len=name_length) :: filename
+    integer(c_int) :: error_code    
+    
+    filename = c2fortran_string(error_filename, name_length)
+    open(unit = njoy_error_unit, file = filename, status = 'unknown', action = 'write', position = 'append', iostat = error_code)
+  end function setup_error_file
+
+  function cleanup_error_file() result(error_code) bind(c, name = 'njoy_cleanup_error_file')
+    integer(c_int) :: error_code    
+    close(unit = njoy_error_unit, iostat = error_code)
+  end function cleanup_error_file
 
 end module njoy_c_helpers
