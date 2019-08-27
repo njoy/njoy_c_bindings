@@ -38,6 +38,7 @@ extern "C"
   int njoy_cleanup_input_file();
   int njoy_cleanup_output_file();
   int njoy_cleanup_error_file();
+  void njoy_sync_error();
   
 #ifdef __cplusplus
 }

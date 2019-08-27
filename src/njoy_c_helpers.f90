@@ -67,4 +67,9 @@ contains
     close(unit = njoy_error_unit, iostat = error_code)
   end function cleanup_error_file
 
+  subroutine sync_error() bind(c, name = 'njoy_sync_error')
+    implicit none
+    njoy_error_unit = njoy_output_unit
+  end subroutine sync_error
+
 end module njoy_c_helpers
