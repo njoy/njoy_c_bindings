@@ -1,31 +1,6 @@
 
-cmake_minimum_required( VERSION 3.2 ) 
-set( CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Supported configuration types" FORCE )
-        
-if( NOT ROOT_DIRECTORY )
-    set( ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
-    if ( NOT fetched_subprojects )
-        if ( NOT PYTHON_EXECUTABLE )
-            find_package( PythonInterp )
-            if ( NOT PYTHONINTERP_FOUND )
-                message( FATAL_ERROR "Python interpeter installation was not found." )
-            endif()
-        endif()
-        execute_process( COMMAND ${PYTHON_EXECUTABLE} "./metaconfigure/fetch_subprojects.py"
-                         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
-                         RESULT_VARIABLE fetch_failure )
-        if ( NOT fetch_failure )
-            set( fetched_subprojects TRUE CACHE BOOL "fetch script ran" )
-        else()
-            message( FATAL_ERROR "Failed to fetch dependencies" )
-        endif()
-    endif()
-endif()
-
 project( njoy_c_bindings LANGUAGES Fortran )
-get_directory_property( is_subproject PARENT_DIRECTORY )
 include( CMakeDependentOption REQUIRED )
-
 set( njoy_c_bindings_GNU_minimum_version 5.1 )
 
 if( njoy_c_bindings_${CMAKE_Fortran_COMPILER_ID}_minimum_version )
@@ -122,46 +97,10 @@ list( INSERT 0 CMAKE_INSTALL_RPATH "${rpath_prefix}/../lib" )
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )
 get_directory_property( is_subproject PARENT_DIRECTORY )
 
-if( NOT TARGET njoy )
-    add_subdirectory( ${ROOT_DIRECTORY}/subprojects/njoy )
-endif()
-
-
-if ( NOT GIT_EXECUTABLE )
-    find_package( Git )
-    if ( NOT GIT_FOUND )
-        message( FATAL_ERROR "git installation was not found." )
-    endif()
-endif()
-
-execute_process(
-    COMMAND ${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_BRANCH
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-)
-execute_process(
-    COMMAND ${GIT_EXECUTABLE} rev-parse HEAD
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_HASH
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-) 
-
-message( STATUS "" )
-message( STATUS "-----------------------------------------------------------" )
-message( STATUS "" )
-message( STATUS "njoy_c_bindings" )
-message( STATUS "Git current branch: ${GIT_BRANCH}" )
-message( STATUS "Git commit hash: ${GIT_HASH}" )
-message( STATUS "" )
-message( STATUS "-----------------------------------------------------------" )
-
 add_library( njoy_c_bindings ${njoy_c_bindings_library_linkage} 
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy_c_bindings.f90"
              "${CMAKE_CURRENT_SOURCE_DIR}/src/njoy_c_helpers.f90" )
-
 target_include_directories( njoy_c_bindings PUBLIC "${CMAKE_Fortran_MODULE_DIRECTORY}" )
-
 target_include_directories( njoy_c_bindings PUBLIC src )
 
 set( PREFIX njoy_c_bindings_${CMAKE_Fortran_COMPILER_ID}_${CMAKE_SYSTEM_NAME} )
@@ -185,7 +124,7 @@ ${Fortran_appended_flags} ${njoy_c_bindings_appended_flags} )
 
 target_link_libraries( njoy_c_bindings PUBLIC "$<$<AND:$<CONFIG:RELEASE>,$<BOOL:${link_time_optimization}>>:${${PREFIX}_RELEASE_flags};${${PREFIX}_link_time_optimization_flags}$<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags};>$<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags};>$<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags};>>$<$<CONFIG:DEBUG>:$<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags};>>$<$<BOOL:Fortran_appended_flags>:${Fortran_appended_flags};>$<$<BOOL:njoy_c_bindings_appended_flags>:${njoy_c_bindings_appended_flags};>" )
 
-target_link_libraries( njoy_c_bindings PUBLIC njoy )
+target_link_libraries( njoy_c_bindings PUBLIC NJOY2016 )
 
 
 file( RELATIVE_PATH relative_fortran_module_files_path 
