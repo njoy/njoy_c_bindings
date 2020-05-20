@@ -1,22 +1,25 @@
-########################################################################
-# Preamble
-########################################################################
+include( FetchContent )
 
-cmake_minimum_required( VERSION 3.16 )
-project( njoy_c_bindings LANGUAGES CXX )
 
 ########################################################################
-# Dependencies
+# Forward declarations
 ########################################################################
 
-include( cmake/njoy_c_bindings_dependencies.cmake )
 
 ########################################################################
-# Project targets
+# Declare project dependencies
 ########################################################################
 
-add_library( njoy_c_bindings INTERFACE )
-target_include_directories( njoy_c_bindings INTERFACE src/ )
-target_link_libraries( njoy_c_bindings
-    INTERFACE njoy
+FetchContent_Declare( njoy
+    GIT_REPOSITORY  http://github.com/njoy/njoy
+    GIT_TAG         origin/build/fetchcontent
+    )
+
+
+########################################################################
+# Load dependencies
+########################################################################
+
+FetchContent_MakeAvailable(
+    njoy
     )
