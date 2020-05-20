@@ -11,8 +11,8 @@ include( FetchContent )
 ########################################################################
 
 FetchContent_Declare( njoy
-    GIT_REPOSITORY  http://github.com/njoy/njoy
-    GIT_TAG         origin/build/fetchcontent
+    GIT_REPOSITORY  http://github.com/njoy/NJOY2016
+    GIT_TAG         origin/master
     )
 
 
