@@ -13,6 +13,7 @@ include( FetchContent )
 FetchContent_Declare( njoy
     GIT_REPOSITORY  http://github.com/njoy/NJOY2016
     GIT_TAG         origin/master
+    GIT_SHALLOW     TRUE
     )
 
 
