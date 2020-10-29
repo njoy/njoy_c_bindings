@@ -20,7 +20,21 @@ file( MAKE_DIRECTORY ${CMAKE_Fortran_MODULE_DIRECTORY} )
 # Dependencies
 ########################################################################
 
-include( cmake/njoy_c_bindings_dependencies.cmake )
+set( REPOSITORIES "release"
+    CACHE STRING
+    "Options for where to fetch repositories: develop, release, local"
+    )
+
+if( REPOSITORIES STREQUAL "develop" )
+    include( cmake/develop_dependencies.cmake )
+
+elseif( REPOSITORIES STREQUAL "release" )
+    include( cmake/release_dependencies.cmake )
+
+elseif( REPOSITORIES STREQUAL "local" )
+    include( cmake/local_dependencies.cmake )
+
+endif()
 
 
 ########################################################################
