@@ -39,6 +39,7 @@ extern "C"
   int njoy_cleanup_output_file();
   int njoy_cleanup_error_file();
   void njoy_sync_error();
+  int njoy_set_input_offset( int offset );
   
 #ifdef __cplusplus
 }

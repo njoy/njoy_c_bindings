@@ -71,5 +71,15 @@ contains
     implicit none
     njoy_error_unit = njoy_output_unit
   end subroutine sync_error
+  
+  subroutine set_input_offset(offset) bind(c, name = 'njoy_set_input_offset')
+    implicit none
+    integer(c_int), intent(in), value :: offset
+
+    print *, "I am in set_input_offset"
+    print *,"fortran offset:", offset
+    call fseek( njoy_input_unit, offset, 0 )
+    ! read(njoy_input_unit, *)
+  end subroutine set_input_offset
 
 end module njoy_c_helpers
